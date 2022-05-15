@@ -1,8 +1,8 @@
-from database import Base
+from .database import Base
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Enum, \
     UniqueConstraint, PrimaryKeyConstraint, ForeignKeyConstraint
 from sqlalchemy.orm import relationship
-from enums import NodeType, EdgeType
+from .enums import NodeType, EdgeType
 
 
 class Node(Base):

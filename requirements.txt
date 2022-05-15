@@ -14,4 +14,4 @@ SQLAlchemy==1.4.36
 starlette==0.17.1
 typing-extensions==4.2.0
 uvicorn==0.17.6
-asyncnpg==0.25.0
+asyncpg==0.25.0

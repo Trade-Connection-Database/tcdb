@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from datetime import datetime
-from enums import NodeType, EdgeType
+from .enums import NodeType, EdgeType
 
 
 class NodeIn(BaseModel):

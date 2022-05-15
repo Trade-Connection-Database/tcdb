@@ -1,9 +1,9 @@
-from crud import NodeOperations, EdgeOperations
+from ..crud import NodeOperations, EdgeOperations
 from fastapi import APIRouter, Depends
 from fastapi.security.api_key import APIKey
-from scemas import NodeIn, EdgeIn
+from ..scemas import NodeIn, EdgeIn
 from typing import List
-from dependencies import get_api_key, get_node_operations, get_edge_operations
+from ..dependencies import get_api_key, get_node_operations, get_edge_operations
 
 router = APIRouter(prefix="/api/write")
 

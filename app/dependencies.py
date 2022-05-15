@@ -1,8 +1,8 @@
 from fastapi import Security, HTTPException
 from fastapi.security.api_key import APIKeyHeader
 from starlette.status import HTTP_403_FORBIDDEN
-from database import SessionLocal
-from crud import NodeOperations, EdgeOperations
+from .database import SessionLocal
+from .crud import NodeOperations, EdgeOperations
 
 
 API_KEY = "samplekey"
