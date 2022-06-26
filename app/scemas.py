@@ -1,12 +1,14 @@
 from pydantic import BaseModel
 from datetime import datetime
 from .enums import NodeType, EdgeType
+from .database import BaseModel as TypesenseBaseModel
+from typesense_orm import int32, Field
 
 
-class NodeIn(BaseModel):
-    name: str
+class NodeIn(TypesenseBaseModel):
+    name: str = Field(..., index=True)
     node_type: NodeType
-    country: int  # by iso 3166 standard
+    country: int32  # by iso 3166 standard
     in_country_id: str
 
 

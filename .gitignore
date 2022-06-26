@@ -2,6 +2,7 @@ venv
 .idea
 **__pycache__**
 test.db
+typesense_orm.tar.gz
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

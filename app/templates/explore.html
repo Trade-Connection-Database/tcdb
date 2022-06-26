@@ -1,5 +1,25 @@
 {% extends "layout.html" %}
 
+{% block head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/algolia-min.css">
+<link rel="stylesheet" href="/static/index.css">
+<link rel="stylesheet" href="/static/instantsearch.scss">
+{% endblock %}
+
 {% block content %}
-<h1>This is explore</h1>
+<div class="container">
+    <div class="search-panel">
+      <div class="search-panel__results">
+        <div id="searchbox"></div>
+        <div id="hits" style="vertical-align:middle"></div>
+      </div>
+    </div>
+
+    <div id="pagination"></div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script>
+<script src="https://cdn.jsdelivr.net/algoliasearch/3.32.0/algoliasearchLite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.5.0"></script>
+<script src="/static/instantsearch.js"></script>
 {% endblock %}

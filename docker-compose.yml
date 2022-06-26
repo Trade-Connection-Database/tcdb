@@ -1,17 +1,6 @@
 version: "3"
 
 services:
-  web:
-    build: .
-    command: "uvicorn app.main:app --host 0.0.0.0 --port 80"
-    volumes:
-      - ".:/app"
-    ports:
-      - "80:80"
-    environment:
-      - DATABASE_URL=postgresql+asyncpg://developer:testpassword@db:5432/test
-    depends_on:
-      - db
   db:
     image: postgres:13-alpine
     volumes:
@@ -22,6 +11,33 @@ services:
       - POSTGRES_USER=developer
       - POSTGRES_PASSWORD=testpassword
       - POSTGRES_DB=test
+  typesense:
+      image: typesense/typesense:nightly
+      volumes:
+        - typesense_data:/data
+      ports:
+        - "40:40"
+      environment:
+        - TYPESENSE_DATA_DIR=/data
+        - TYPESENSE_API_KEY=abcd
+        - TYPESENSE_ENABLE_CORS=True
+        - TYPESENSE_API_PORT=40
+  web:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    command: "uvicorn app.main:app --host 0.0.0.0 --port 80"
+    volumes:
+      - "~/typesense_orm:/typesense_orm:ro"
+    ports:
+      - "80:80"
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://developer:testpassword@db:5432/test
+      - TYPESENSE_URL=http://typesense:40
+    depends_on:
+      - db
+      - typesense
 
 volumes:
   postgres_data:
+  typesense_data:

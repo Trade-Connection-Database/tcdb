@@ -2,6 +2,7 @@ from .models import Node, Edge, Proof
 from .scemas import NodeIn, EdgeIn
 from typing import List, Tuple
 from sqlalchemy.ext.asyncio import AsyncSession
+from typesense_orm import Client, ApiCallerAsync
 from sqlalchemy.dialects import postgresql
 from sqlalchemy.future import select
 from sqlalchemy.sql import text
@@ -9,15 +10,22 @@ from abc import ABC, abstractmethod
 
 
 class DBOperator(ABC):
-    def __init__(self, db_session: AsyncSession):
+    def __init__(self, db_session: AsyncSession, api_client: Client[ApiCallerAsync]):
         self.db_session = db_session
+        self.typesense_client = api_client
 
 
 class NodeOperations(DBOperator):
     async def add(self, nodes: List[NodeIn]):
         db_nodes = list(map(lambda node: Node(**node.dict()), nodes))
         self.db_session.add_all(db_nodes)
+        # await self.db_session.stream(Node.insert(), nodes)
+        # for response streaming
         await self.db_session.commit()
+        res = await self.typesense_client.import_objects(nodes)
+        print("IMPORT RES")
+        async for item in res:
+            print(item)
         return map(lambda node: node.id, db_nodes)
 
 

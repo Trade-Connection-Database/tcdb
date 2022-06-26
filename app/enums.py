@@ -1,14 +1,14 @@
-from enum import Enum
+from enum import Enum, IntEnum
 
 
-class NodeType(Enum):
+class NodeType(IntEnum):
     EVENT = 1
     PERSON = 2
     FOUNDATION = 3
     COMPANY = 4
 
 
-class EdgeType(Enum):
+class EdgeType(IntEnum):
     TRADE_DEAL = 1
     OWNERSHIP = 2
     AFFILIATION = 3
