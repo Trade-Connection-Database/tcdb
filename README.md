@@ -8,6 +8,7 @@ DIY торговая блокада помогла сторонникам Ган
 
 #### Структура
  - веб-сервер написанный на fastapi и предоставляющий REST API на добавление и чтение данных
+ - typesense сервер для быстрого полнотекстового поиска
  - база данных, в которой хранятся все наши данные. В настоящий момент это postgresql
  - питоновская обёртка над API чтобы легко было читать и записывать данные программно
  - html/js клиент для удобного просмотра данных человеком
@@ -25,8 +26,12 @@ DIY торговая блокада помогла сторонникам Ган
 oleg.demianchenko@gmail.com  
 telegram: @oleg_demianchenko  
 
+#### Демки
+демка полнотекстового поиска (да, я не фронтендер)
+[demo.webm](https://user-images.githubusercontent.com/36077611/177140719-f1eaaf1c-123c-4127-b84c-3194c38a9583.webm)
+
 Любая помощь приетствуется.  
-Если вы читаете это, вы и есть сопротивление, вместе хорошие люди победят.  
+Если вы читаете это, вы и есть сопротивление, вместе хорошие люди победят.
 ## English
 TCDB (trade connection database) - databese of trade connections between companies, foundations and people.
 At the moment the project is in the development stage, but that's how I see it in future
@@ -36,6 +41,7 @@ TCDB is a tool for concious people to create financial pressure on people doing 
 
 #### Structure
  - web-server on fastapi with REST API for reading and adding data.
+ - typeserver for instsnt full-text search.
  - database itself. At the moment it is postgresql
  - python wrapper on API so that data could be easile accessed and added programmatically
  - html/js client for convenient data representation for humans.
@@ -52,6 +58,10 @@ When we will have enough data the databse can be used by news media, blogers and
 #### Contacts
 oleg.demianchenko@gmail.com  
 telegram: @oleg_demianchenko  
+
+#### Demos
+Demo of instantsearch (yes, i am not a frontender)
+[demo.webm](https://user-images.githubusercontent.com/36077611/177140719-f1eaaf1c-123c-4127-b84c-3194c38a9583.webm)
 
 
 Any assistance is welcome.  
