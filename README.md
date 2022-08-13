@@ -1,6 +1,10 @@
-# tcdb
+<img src="./logo.svg" width="250">
+
+# TCDB
+
 ## Русский
-TCDB (trade connection database) - база данных торговых связей между компаниями, фондами и людьми. 
+TCDB (trade connection database)
+- база данных торговых связей между компаниями, фондами и людьми. 
 В данный момент база находится в стадии разработки, но ниже изложено наше видение её развития.
 
 #### Концепция
@@ -26,11 +30,11 @@ DIY торговая блокада помогла сторонникам Ган
 Когда наберётся достаточно данных, база может быть использована журналистами новостных изданий, блогерами и любой персоной для того, чтобы сделать свою жизнь (и мир) капельку этичнее.
 
 #### Контакты
-oleg.demianchenko@gmail.com  
-telegram: @oleg_demianchenko  
+tcdb.head@gmail.com
+telegram: https://t.me/tcdb_contact_bot
 
 #### Демки
-демка полнотекстового поиска (да, я не фронтендер)
+демка полнотекстового поиска (да, у нас нет фронтендера)
 [demo.webm](https://user-images.githubusercontent.com/36077611/177140719-f1eaaf1c-123c-4127-b84c-3194c38a9583.webm)
 
 Любая помощь приветствуется.  
@@ -63,11 +67,11 @@ Data sources and methods of their handling are very diverse, that's why we're cr
 When we will have enough data the database can be used by news agencies, bloggers and other people trying to make their life (and the world) a bit more ethical.  
 
 #### Contacts
-oleg.demianchenko@gmail.com  
-telegram: @oleg_demianchenko  
+tcdb.head@gmail.com  
+telegram: https://t.me/tcdb_contact_bot
 
 #### Demos
-Demo of an instantsearch (yes, i am not a frontender)
+Demo of an instantsearch (yes, i we don't have a frontender)
 [demo.webm](https://user-images.githubusercontent.com/36077611/177140719-f1eaaf1c-123c-4127-b84c-3194c38a9583.webm)
 
 
