@@ -10,10 +10,10 @@ COPY ./requirements.txt /code/requirements.txt
 #
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
-COPY ./typesense_orm.tar.gz /typesense_orm.tar.gz
+# COPY ./typesense_orm.tar.gz /typesense_orm.tar.gz
 
 #
-RUN pip install --no-cache-dir /typesense_orm.tar.gz
+# RUN pip install --no-cache-dir /typesense_orm.tar.gz
 
 #
 COPY ./app /code/app
