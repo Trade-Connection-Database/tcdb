@@ -23,9 +23,7 @@ services:
         - TYPESENSE_ENABLE_CORS=True
         - TYPESENSE_API_PORT=40
   web:
-    build:
-      dockerfile: Dockerfile
-      context: .
+    image: 547369544921.dkr.ecr.eu-central-1.amazonaws.com/typesense
     command: "uvicorn app.main:app --host 0.0.0.0 --port 80"
     volumes:
       - "~/typesense_orm:/typesense_orm:ro"
