@@ -12,7 +12,7 @@ Base = declarative_base()
 
 typesense_url = os.environ["TYPESENSE_URL"]
 node = Node(url=typesense_url)
-client = Client[ApiCallerAsync](api_key="abcd", nodes=[node])
+client = Client[ApiCallerAsync](api_key=os.environ["TYPESENSE_API_KEY"], nodes=[node])
 client.start()
 
 try:
