@@ -2,7 +2,7 @@ version: "3"
 
 services:
   db:
-    image: 547369544921.dkr.ecr.eu-central-1.amazonaws.com/psql
+    image: postgres:13-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     expose:
@@ -12,7 +12,7 @@ services:
       - POSTGRES_PASSWORD=testpassword
       - POSTGRES_DB=test
   typesense:
-      image: 547369544921.dkr.ecr.eu-central-1.amazonaws.com/typesense
+      image: typesense/typesense:nightly
       volumes:
         - typesense_data:/data
       ports:
@@ -23,7 +23,9 @@ services:
         - TYPESENSE_ENABLE_CORS=True
         - TYPESENSE_API_PORT=40
   web:
-    image: 547369544921.dkr.ecr.eu-central-1.amazonaws.com/typesense
+    build:
+      dockerfile: Dockerfile-test
+      context: .
     command: "uvicorn app.main:app --host 0.0.0.0 --port 80"
     volumes:
       - "~/typesense_orm:/typesense_orm:ro"
@@ -32,6 +34,7 @@ services:
     environment:
       - DATABASE_URL=postgresql+asyncpg://developer:testpassword@db:5432/test
       - TYPESENSE_URL=http://typesense:40
+      - TYPESENSE_API_KEY=abcd
     depends_on:
       - db
       - typesense
