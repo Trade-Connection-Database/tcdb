@@ -21,19 +21,19 @@ services:
         - TYPESENSE_DATA_DIR=/data
         - TYPESENSE_API_KEY=abcd
         - TYPESENSE_ENABLE_CORS=True
-        - TYPESENSE_API_PORT=40
+        - TYPESENSE_API_PORT=80
   web:
     build:
       dockerfile: Dockerfile-test
       context: .
-    command: bash -c "sleep 20 && uvicorn app.main:app --host 0.0.0.0 --port 80"
+    command: bash -c "sleep 15 && uvicorn app.main:app --host 0.0.0.0 --port 80"
     volumes:
       - "~/typesense_orm:/typesense_orm:ro"
     ports:
       - "80:80"
     environment:
       - DATABASE_URL=postgresql+asyncpg://developer:testpassword@db:5432/test
-      - TYPESENSE_URL=http://typesense:40
+      - TYPESENSE_URL=http://typesense:80
       - TYPESENSE_API_KEY=abcd
     depends_on:
       - db

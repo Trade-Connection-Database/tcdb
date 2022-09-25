@@ -22,8 +22,8 @@ class NodeOperations(DBOperator):
         # await self.db_session.stream(Node.insert(), nodes)
         # for response streaming
         await self.db_session.commit()
-        print(NodeIn.__fields__)
-        res = await self.typesense_client.import_objects(map(lambda a: NodeIn(**a.dict()), nodes))
+        list_of_entries = list(map(lambda a: NodeIn(**a.dict()), nodes))
+        res = await self.typesense_client.import_objects(list_of_entries)
         print("IMPORT RES")
         async for item in res:
             print(item)

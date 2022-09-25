@@ -3,7 +3,7 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
     apiKey: 'samplekey', // Be sure to use an API key that only allows searches, in production
     nodes: [
       {
-        host: 'localhost/search',
+        host: location.host + '/search',
         protocol: 'http',
       },
     ],
@@ -13,7 +13,7 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   //  queryBy is required.
   //  filterBy is managed and overridden by InstantSearch.js. To set it, you want to use one of the filter widgets like refinementList or use the `configure` widget.
   additionalSearchParameters: {
-    query_by: 'name',
+    query_by: 'full_name',
   },
 });
 const searchClient = typesenseInstantsearchAdapter.searchClient;
@@ -37,7 +37,7 @@ search.addWidgets([
         return `
         <div>
           <div class="hit-name">
-            ${item._highlightResult.name.value}
+            ${item._highlightResult.full_name.value}
           </div>
         </div>
       `;
