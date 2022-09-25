@@ -25,6 +25,7 @@ class Person(CorpFundPers):
     node_type: Literal[NodeType.PERSON]
 
 
+
 class CorpFund(CorpFundPers):
     node_type: Literal[NodeType.COMPANY, NodeType.FOUNDATION]
     address: str = Field(..., index=True)
@@ -33,11 +34,11 @@ class CorpFund(CorpFundPers):
 
 
 class NodeIn(TypesenseBaseModel):
-    full_name: str = Field(..., index=True)
+    full_name: str = Field(..., index=True, optional=False)
     node_type: NodeType
     country: Optional[int32]  # by iso 3166 standard
-    tax_id: Optional[str]
-    address: Optional[str]
+    tax_id: Optional[str] = Field(None, index=True)
+    address: Optional[str] = Field(None, index=True)
     authorized_capital: Optional[int32]
     date_of_being_found: Optional[int64]
 

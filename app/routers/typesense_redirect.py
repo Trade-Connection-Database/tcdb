@@ -19,7 +19,7 @@ async def _proxy(request: Request, path: str):
     return response
 
 
-@router.api_route("{path}", methods=["GET", "POST", "PUT", "DELETE"])
+@router.api_route("/{path}", methods=["GET", "POST", "PUT", "DELETE"])
 async def redirect_without_port(request: Request, path: str,
                                 #api_key: APIKey = Depends(get_tcdb_or_typesense_key)
                                 ):
