@@ -19,5 +19,5 @@ nest_asyncio
 aiohttp
 typing_inspect
 asyncstdlib
-typesense_orm
+typesense_orm==0.0.14
 requests~=2.28.0

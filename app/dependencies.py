@@ -16,6 +16,7 @@ typesense_api_key_query = APIKeyQuery(name=TYPESENSE_KEY_NAME.lower(), auto_erro
 
 
 async def get_api_key(key_header: str = Security(api_key_header)):
+    print("CODE UPDATED")
     if API_KEY == key_header:
         return key_header
     else:
@@ -27,7 +28,7 @@ async def get_tcdb_or_typesense_key(key_header: str = Security(api_key_header),
                                     typesense_lower: str = Security(typesense_api_key_query),
                                     path: str = None):
     print(typesense_header)
-    if API_KEY in [key_header, typesense_header, typesense_lower] or path == "health":
+    if API_KEY in [key_header, typesense_header] or path == "health":
         return API_KEY
     else:
         raise HTTPException(status_code=HTTP_403_FORBIDDEN, detail="neither tcdb key nor typesense key were provided")

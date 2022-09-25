@@ -1,6 +1,6 @@
 from .database import Base
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Enum, \
-    UniqueConstraint, PrimaryKeyConstraint, ForeignKeyConstraint
+    UniqueConstraint, PrimaryKeyConstraint, ForeignKeyConstraint, Date
 from sqlalchemy.orm import relationship
 from .enums import NodeType, EdgeType
 
@@ -8,11 +8,14 @@ from .enums import NodeType, EdgeType
 class Node(Base):
     __tablename__ = "nodes"
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String)
+    full_name = Column(String)
     node_type = Column(Enum(NodeType))
-    country = Column(Integer)
-    in_country_id = Column(String)
-    __table_args__ = (UniqueConstraint("country", "in_country_id", name="international_id"),)
+    country = Column(Integer, nullable=True)
+    tax_id = Column(String, nullable=True)
+    address = Column(String, nullable=True)
+    authorized_capital = Column(Integer, nullable=True)
+    date_found = Column(Date, nullable=True)
+    __table_args__ = (UniqueConstraint("country", "tax_id", name="international_id"),)
 
 
 class Edge(Base):

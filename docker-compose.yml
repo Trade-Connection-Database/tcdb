@@ -26,7 +26,7 @@ services:
     build:
       dockerfile: Dockerfile-test
       context: .
-    command: "uvicorn app.main:app --host 0.0.0.0 --port 80"
+    command: bash -c "sleep 20 && uvicorn app.main:app --host 0.0.0.0 --port 80"
     volumes:
       - "~/typesense_orm:/typesense_orm:ro"
     ports:

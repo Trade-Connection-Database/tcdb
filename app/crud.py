@@ -1,6 +1,6 @@
 from .models import Node, Edge, Proof
-from .scemas import NodeIn, EdgeIn
-from typing import List, Tuple
+from .scemas import NodeIn, Event, CorpFund, Person, EdgeIn
+from typing import List, Tuple, Union
 from sqlalchemy.ext.asyncio import AsyncSession
 from typesense_orm import Client, ApiCallerAsync
 from sqlalchemy.dialects import postgresql
@@ -16,13 +16,14 @@ class DBOperator(ABC):
 
 
 class NodeOperations(DBOperator):
-    async def add(self, nodes: List[NodeIn]):
+    async def add(self, nodes: List[Union[Person, CorpFund, Event]]):
         db_nodes = list(map(lambda node: Node(**node.dict()), nodes))
         self.db_session.add_all(db_nodes)
         # await self.db_session.stream(Node.insert(), nodes)
         # for response streaming
         await self.db_session.commit()
-        res = await self.typesense_client.import_objects(nodes)
+        print(NodeIn.to_schema())
+        res = await self.typesense_client.import_objects(map(lambda a: NodeIn(**a.dict()), nodes))
         print("IMPORT RES")
         async for item in res:
             print(item)
