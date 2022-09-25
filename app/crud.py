@@ -23,7 +23,8 @@ class NodeOperations(DBOperator):
         # for response streaming
         await self.db_session.commit()
         list_of_entries = list(map(lambda a: NodeIn(**a.dict()), nodes))
-        res = await self.typesense_client.import_objects(list_of_entries)
+        print(list_of_entries)
+        res = await self.typesense_client.import_objects(map(lambda a: NodeIn(**a.dict()), nodes))
         print("IMPORT RES")
         async for item in res:
             print(item)
